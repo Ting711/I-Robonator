@@ -30,6 +30,9 @@ The autonomous vehicle robot is mainly built from the Lego 45544 Mindstorms EV3 
 
 Revving up our robot's energy game, we've enlisted the powerhouse of Jugee Rechargeable Double A Lithium Battery, delivering an electrifying punch of 1.5V and 3000mWh. This dynamo is the driving force propelling our robotic marvel.
 
+# 3.0 Obstacle Management
+We employ the Clev3r-Python programming language. The programming is organized into two parts which are OPEN CHALLENGE & OBSTACLE CHALLENGE.
+
 ## 3.1 Open Challenge
 
 The robot will run clockwise if the camera detects the orange line and the same goes to the blue line. Next, gyro sensors can make sure the robot travels in a straight line and control the robot to turn accurately. Lastly, the left and right ultrasonic sensors will assist the robot in detecting the distance between the vehicle and the wall. When the robot gets closer to the wall, the steering will do a correction to avoid hitting the wall.
