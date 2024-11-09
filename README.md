@@ -15,36 +15,22 @@ models This folder contains the 3D design of the vehicle in .lxf and the rendere
 other This folder contains other files which can be used to understand how to prepare the vehicle for the competition.
 
 # I-Robonator Team, Malaysia
-Our team, consisting of three dedicated members, meticulously manages vital aspects of the build. Here's a brief introduction to Team I-Robonator from Malaysia, along with an overview of the key electromechanical components powering our fully autonomous vehicle. Let's meet our team members:
-1.	RAYMOND TING YIH WEI
-2.	PUI SIN RU
-3.	ADAM SYAHMI BIN MOHD SYAHRIZAL
+Our team, I-Robonator from Malaysia is a passionate trio dedicated to perfecting the essential components of our self-driving car. We were thrilled to introduce our committed members, Adam Syahmi Bin Mohd Syahrizal, Pui Sin Ru and Raymond Ting Yih Wei. Together, we carefully design and oversee each electronic mechanical part and ensure our self-driving vehicle runs smoothly.
+
+# Performance Video
+This video has elaborated on the robot’s structure, a demonstration of the Open Challenge and Obstacle Challenge and an explanation of how the robot functions for the Open Challenge and Obstacle Challenge.
+The link or QR code of the video:
 
 # 1.0 Mobility Management
-## 1.1 Robot Design
-The autonomous vehicle robot is mainly built from the Lego 45544 Mindstorms EV3 Education Set. The build of the robot is made up of a chassis, 2 motors and 3 types of sensors.
+This section explains the robot design, vehicle movement management, and the implementation of selected motors. It also provides a brief discussion of the vehicle chassis design and the mounting of all components to the vehicle structure. The discussion includes engineering principles such as speed, torque, and power.
 
+## 1.1 Chasis of Robot
+We use a LEGO 32019+86652 tire and differential gear for our robot’s chasis.
+ 
+### 1.1.1 Robot's Tire
+The significance of the vehicle’s chassis design lies in providing structural support, ensuring the robot’s stability during dynamic maneuvers such as high-speed turns and sudden accelerations. Specifically, the rear wheels are fitted with tires suitable for the robot's size, helping to enhance stability and speed during operation. Additionally, a differential gear allows for smoother turns, optimizing the robot’s overall performance.
+The LEGO 32019+86652 tire combination was chosen because of its unique benefits, which make it ideal for robotics and vehicle projects requiring traction, stability, and operational efficiency. With the 32019 rim and the 86652 tire, this combination delivers a moderate size that fits medium-sized robots or cars perfectly without adding extra mass. Better control is made possible by it which is particularly advantageous for projects constructed in cramped areas.
+By decreasing slippage, the tread pattern of the 86652 tire improves grip, which is essential for preserving stability on a variety of surfaces, including uneven terrain and smooth floors. It is also ideal for dynamic movements like sharp twists and abrupt accelerations because of the tight fit between the tire and rim, which guarantees stability even under large loads or high speeds. The possibility of tire slippage or balancing problems is reduced by this sturdy construction.
 
-# 2.0 Power and Sense Management
-## 2.1 Power source
-
-Revving up our robot's energy game, we've enlisted the powerhouse of Jugee Rechargeable Double A Lithium Battery, delivering an electrifying punch of 1.5V and 3000mWh. This dynamo is the driving force propelling our robotic marvel.
-
-# 3.0 Obstacle Management
-We employ the Clev3r-Python programming language. The programming is organized into two parts which are OPEN CHALLENGE & OBSTACLE CHALLENGE.
-
-## 3.1 Open Challenge
-
-The robot will run clockwise if the camera detects the orange line and the same goes to the blue line. Next, gyro sensors can make sure the robot travels in a straight line and control the robot to turn accurately. Lastly, the left and right ultrasonic sensors will assist the robot in detecting the distance between the vehicle and the wall. When the robot gets closer to the wall, the steering will do a correction to avoid hitting the wall.
-
-## 3.2 Obstacle Challenge
-
-The main sensor that assists the robot in this challenge is the Pixy 2 Camera. The upper part of the Pixy 2 Camera is used to detect the presence of the traffic sign. If the traffic sign is red, the steering will turn right. The same concept goes to the green traffic sign.
-
-The bottom Pixy 2 camera will help the robot position on the map. It can make sure the robots to be in the middle on the map. It will prevent the robot from knocking the left and right wall. 
-
-
-The gyro sensors still have the same function which is to make sure the robot travels in a straight line and control the robot to turn accurately.
-
-
+### 1.1.1 Differential gear
 
