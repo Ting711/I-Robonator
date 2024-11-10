@@ -1,5 +1,5 @@
 # Introduction
-This repository comprises engineering materials of the autonomous vehicle robot's model, designed for participation in the WRO Future Engineers competition in 2024. 
+This repository comprises engineering materials of self-driving car's model, designed for participation in the WRO Future Engineers competition in 2024. 
 
 # Content
 schemes This folder contains one or several schematic diagrams in the form of JPEG, PNG, or PDF of the electromechanical components illustrating all the elements (electronic components and motors) used in the vehicle and how they connect.
