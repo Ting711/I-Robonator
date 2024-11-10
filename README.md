@@ -27,9 +27,6 @@ This section covers how the vehicle movement are manged, what motors are selecte
 ## 1.1 Robot Design
 The self-driving cars robot is built from the Lego 45544 Mindstorms EV3 Education Set. The building instruction can be found in Appendix 1. This robot is built on chassis, 2 medium motors, 3 types of sensors and 2 camera. 
 
-![image](https://github.com/user-attachments/assets/c30c4e5b-c7c1-4eb4-8552-85d852c85711)
-![image](https://github.com/user-attachments/assets/bd5e0fda-5f68-43db-bba7-7e78fecf0592)
-
 
 ## 1.2	 Chassis of Robot
 We use a LEGO 32019+86652 tire and differential gear for our robot’s chassis. We will have a briefly discussion about the implementation of motors towards the chassis as well.
@@ -56,9 +53,6 @@ The Medium Motor is key to the robot’s steering system due to its light weight
 To keep the robot stable, the medium motor is placed low in the robot’s base to lower its center of gravity. This helps the robot move smoothly, reducing wobbling and rolling, especially when it turns. Lowering the center of gravity also improves balance, allowing the robot to move faster and handle rough terrain better.
 A second medium motor is positioned at the front to control steering, providing precise direction changes. This motor helps the robot turn quickly and accurately, which is especially useful in tight or complex areas. Together, these motors make the robot’s movement smoother and more responsive to its surroundings.
 
-![image](https://github.com/user-attachments/assets/f57291df-792d-4efb-bd91-a00060155e52)
-![image](https://github.com/user-attachments/assets/94e73131-e2e1-46dc-a3d8-07fb37a8296b)
-
 ## 1.3 Steering
 Ackermann steering relies on the engineering principle that the inner wheel needs to turn at a sharper angle than the outer wheel for smoother, low-friction turns. Linkages connect the steering arms to the wheels, adjusting their angles to reduce friction and improve efficiency. Two tie rods link the wheels' steering arms to a central pivot, ensuring precise wheel alignment as the steering wheel turns. This setup minimizes tire wear and distributes the turning load evenly. For our robot, it enables precise turning, reduces stress on parts, and supports tasks like obstacle avoidance and parking.
  
@@ -70,17 +64,11 @@ We control our robot using the Clev3r-Python programming language.
 
 ## 3.1 Open Challenge
 For the open challenges, we use the ultrasonic sensors to decide if the robot should move clockwise or counterclockwise. The robot will move clockwise if the right ultrasonic sensors detect a distance greater than 2000mm from the inner wall. The same goes to the left ultrasonic sensors. The ultrasonic sensors also help to measure the distance for both of the wall. It will assist the robot to adjust its steering to avoid hitting the wall as it moves closer. The gyro sensor ensures the robot stays on a straight path. 
-Diagram below shows the flowchart for Open Challenge: 
- 
-![image](https://github.com/user-attachments/assets/7d025ffa-9709-44c3-9115-4e16fba66450)
 
 This is the demonstration video for Open Challenge: https://www.youtube.com/watch?v=yhfqJiTPy_Y 
 
 ## 3.2 Obstacle Challenge
 The Pixy 2 Camera is the primary sensor that helps the robot with this mission. The Pixy 2 camera on top is used to determine whether a traffic sign is there. The steering will turn to the right if the traffic sign is red, and to the left if the sign is green. It also use to determine the parking lot and do the parking when the robot complete 3 laps of the round. The robot will be able to determine if the traffic sign is green or red with the aid of the Pixy 2 camera behind it. The robot must make a U-turn in the third round if the final traffic sign is red. When the robot's colour sensor in front of it detects an orange line, it turns clockwise; when it detects a blue line, it turns counterclockwise. The purpose of the gyro sensors remains unchanged which is ensure that the robot moves in a straight line and to precisely control its rotation. To keep the robot from hitting the wall, both sides of the ultrasonic sensor ensure that it always maintains a safe distance between the inner and outside walls. 
-
-Diagram below shows the flowchart for Obstacle Challenge:
-![image](https://github.com/user-attachments/assets/2fdc5d5b-d88d-4237-acff-2176e7a333b9)
 
 This is the demonstration video for Obstacle Challenge: https://www.youtube.com/watch?v=gZMsuITQNF0 
 
