@@ -14,10 +14,7 @@ video This folder contains video.md file that demonstrates how the robot functio
 
 models This folder contains the 3D design of the vehicle in .lxf and the rendered model of the vehicle.
 
-other This folder contains other files which can be used to understand how to prepare the vehicle for the competition.
-
-es stability even under large loads or high speeds. The possibility of tire slippage or balancing problems is reduced by this sturdy construction.
-
+other This folder contains other files which can be used to understand how to prepare the vehicle for the competition
 
 # I-Robonator Team, Malaysia
 
