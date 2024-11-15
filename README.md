@@ -4,17 +4,17 @@ This documentation covers the mobility management, power and sense management, o
 
 # Content
 
-schemes This folder contains one or several schematic diagrams in the form of JPEG, PNG, or PDF of the electromechanical components illustrating all the elements (electronic components and motors) used in the vehicle and how they connect.
+**schemes** This folder contains one or several schematic diagrams in the form of JPEG, PNG, or PDF of the electromechanical components illustrating all the elements (electronic components and motors) used in the vehicle and how they connect.
 
-src This folder contains all the programming flowcharts and all programming used to participate in the WRO 2024 Future Engineers Category.
+**src** This folder contains all the programming flowcharts and all programming used to participate in the WRO 2024 Future Engineers Category.
 
-pictures-team & vehicle This folder contains photos of the team participating in the WRO, photos of the vehicle (from all sides and bottom views) and photo shown in documentation.
+**pictures-team & vehicle** This folder contains photos of the team participating in the WRO, photos of the vehicle (from all sides and bottom views) and photo shown in documentation.
 
-video This folder contains video.md file that demonstrates how the robot functions to solve both tasks.
+**video** This folder contains video.md file that demonstrates how the robot functions to solve both tasks.
 
-models This folder contains the 3D design of the vehicle in .lxf and the rendered model of the vehicle.
+**models** This folder contains the 3D design of the vehicle in .lxf and the rendered model of the vehicle.
 
-other This folder contains other files which can be used to understand how to prepare the vehicle for the competition
+**other** This folder contains other files which can be used to understand how to prepare the vehicle for the competition
 
 # I-Robonator Team, Malaysia
 
@@ -45,7 +45,7 @@ Our self-driving car's chassis uses a LEGO 32019+86652 tyre and differential gea
 
 The LEGO 32019+86652 tyre combination was chosen because of its unique benefits, which make it ideal for robotics and vehicle projects requiring traction, stability, and operational efficiency. With the 32019 rims and the 86652 tyre, this combination delivers a moderate size that fits medium-sized robots or cars perfectly without adding extra mass. 
 
-	By decreasing slippage, the tread pattern of the 86652 tyre improves grip, which is essential for preserving stability on a variety of surfaces. It is also ideal for dynamic movements like sharp twists and abrupt accelerations because of the tight fit between the tyre and rim, which guarantees stability even under large loads or high speeds. The possibility of tyre slippage or balancing problems is reduced by this sturdy construction.
+By decreasing slippage, the tread pattern of the 86652 tyre improves grip, which is essential for preserving stability on a variety of surfaces. It is also ideal for dynamic movements like sharp twists and abrupt accelerations because of the tight fit between the tyre and rim, which guarantees stability even under large loads or high speeds. The possibility of tyre slippage or balancing problems is reduced by this sturdy construction.
 
 ![image](https://github.com/user-attachments/assets/b7fbae36-53ff-404c-95d7-1de1a89d1d9f)
 
@@ -53,7 +53,7 @@ The LEGO 32019+86652 tyre combination was chosen because of its unique benefits,
 
 Two output shafts can revolve at different speeds thanks to a mechanical component called a differential gear. Robots and automobiles that need flexible steering are the primary applications for this concept. When a car rotates, the differential gear is particularly crucial since a smooth turn requires the inner and outer wheels to revolve at different speeds.
 
-	There are various benefits to designing a robot or vehicle with a differential gear. Permitting the inner and outer wheels to rotate at different speeds first provides smooth turning by lowering friction and the chance of skidding during turns. Besides, it makes the vehicle easier to handle, which enhances manoeuvrability, especially in complex or confined areas where precision steering is crucial. Third, the differential gear prolongs the life of tyres and other parts by minimising friction brought on by speed differentials between the inner and outer wheels.
+There are various benefits to designing a robot or vehicle with a differential gear. Permitting the inner and outer wheels to rotate at different speeds first provides smooth turning by lowering friction and the chance of skidding during turns. Besides, it makes the vehicle easier to handle, which enhances manoeuvrability, especially in complex or confined areas where precision steering is crucial. Third, the differential gear prolongs the life of tyres and other parts by minimising friction brought on by speed differentials between the inner and outer wheels.
 
 ![image](https://github.com/user-attachments/assets/d27a207a-de89-4c4f-a9eb-560722ab069a)
 
@@ -67,15 +67,15 @@ Motors implementation and its engineering principle
 
 ![image](https://github.com/user-attachments/assets/b7ddd2c3-bfe6-4ec7-a7e8-b7b08d34a82d)
 
-	The medium motor is implemented together with different types of tooth gear. The motor starts at 260 RPM and drives a 36-tooth gear, which meshes with a smaller 28-tooth gear. This size difference makes the 28-tooth gear spin faster, reaching 335.4 RPM. Next, the 28-tooth gear connects to three even smaller 12-tooth gears, which spin 2.33 times faster than the 28-tooth gear, bringing the final speed to 781.5 RPM at the wheels. This gear system gradually increases the motor's speed, so the wheels turn quickly and efficiently at 781.5 RPM.
+The medium motor is implemented together with different types of tooth gear. The motor starts at 260 RPM and drives a 36-tooth gear, which meshes with a smaller 28-tooth gear. This size difference makes the 28-tooth gear spin faster, reaching 335.4 RPM. Next, the 28-tooth gear connects to three even smaller 12-tooth gears, which spin 2.33 times faster than the 28-tooth gear, bringing the final speed to 781.5 RPM at the wheels. This gear system gradually increases the motor's speed, so the wheels turn quickly and efficiently at 781.5 RPM.
 
-	The medium motor is key to the robot’s steering system due to its lightweight, speed, and precision. It enables the robot to make quick, accurate turns, helping it avoid obstacles and handle sudden changes in terrain smoothly. This motor’s precise control makes the robot more reliable for complex maneuvres.
+The medium motor is key to the robot’s steering system due to its lightweight, speed, and precision. It enables the robot to make quick, accurate turns, helping it avoid obstacles and handle sudden changes in terrain smoothly. This motor’s precise control makes the robot more reliable for complex maneuvres.
 
 ### 1.2.4 Connection of Motor To The Chassis
 
-	To keep the robot stable, the medium motor is placed low in the robot’s base to lower its center of gravity. This helps the robot move smoothly, reducing wobbling and rolling, especially when it turns. Lowering the center of gravity also improves balance, allowing the robot to move faster and handle rough terrain better.
+To keep the robot stable, the medium motor is placed low in the robot’s base to lower its center of gravity. This helps the robot move smoothly, reducing wobbling and rolling, especially when it turns. Lowering the center of gravity also improves balance, allowing the robot to move faster and handle rough terrain better.
 
-	A second medium motor is positioned at the front to control steering, providing precise direction changes. This motor helps the robot turn quickly and accurately, which is especially useful in tight or complex areas. Together, these motors make the robot’s movement smoother and more responsive to its surroundings.
+A second medium motor is positioned at the front to control steering, providing precise direction changes. This motor helps the robot turn quickly and accurately, which is especially useful in tight or complex areas. Together, these motors make the robot’s movement smoother and more responsive to its surroundings.
 
 ![image](https://github.com/user-attachments/assets/c757db2e-8dca-4f2a-9727-9096a71d1350)
 
@@ -87,11 +87,11 @@ Ackermann steering relies on the engineering principle that the inner wheel need
 
 # 2.0 Power and Sense Management
 
-	The power and sensor management section explains the vehicle's power source and the sensors it uses to help the vehicle navigate different challenges. It also covers the reason certain sensors were chosen and how they work with the vehicle, including their power usage. The section also comes with a wiring diagram and the Build Of Material (BOM) that shows all the components and how they are professionally wired together.
+The power and sensor management section explains the vehicle's power source and the sensors it uses to help the vehicle navigate different challenges. It also covers the reason certain sensors were chosen and how they work with the vehicle, including their power usage. The section also comes with a wiring diagram and the Build Of Material (BOM) that shows all the components and how they are professionally wired together.
 
 ## 2.1 Power Source
 
-	We use the Jugee Rechargeable AA Lithium Battery, which provides 1.5V and 3000mWh of power, to drive our robot forward.
+We use the Jugee Rechargeable AA Lithium Battery, which provides 1.5V and 3000mWh of power, to drive our robot forward.
 
 ![image](https://github.com/user-attachments/assets/4c95c2c8-64c7-4697-8d5d-d01c0942abb3)
 
