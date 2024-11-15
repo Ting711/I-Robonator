@@ -77,13 +77,13 @@ To keep the robot stable, the medium motor is placed low in the robot’s base t
 
 A second medium motor is positioned at the front to control steering, providing precise direction changes. This motor helps the robot turn quickly and accurately, which is especially useful in tight or complex areas. Together, these motors make the robot’s movement smoother and more responsive to its surroundings.
 
-![image](https://github.com/user-attachments/assets/c757db2e-8dca-4f2a-9727-9096a71d1350)
+![image](https://github.com/user-attachments/assets/ba3a0ffc-a692-4296-8c5d-7adf16eb673a)
 
 ## 1.3 Steering
 
 Ackermann steering relies on the engineering principle that the inner wheel needs to turn at a sharper angle than the outer wheel for smoother, low-friction turns. Linkages connect the steering arms to the wheels, adjusting their angles to reduce friction and improve efficiency. Two tie rods link the wheels' steering arms to a central pivot, ensuring precise wheel alignment as the steering wheel turns. This setup minimizes tyre wear and distributes the turning load evenly. For our robot, it enables precise turning, reduces stress on parts, and supports tasks like obstacle avoidance and parking.
 
-![image](https://github.com/user-attachments/assets/d972e6bb-2fd4-428e-ac55-c12d66c2376a)
+![image](https://github.com/user-attachments/assets/c757db2e-8dca-4f2a-9727-9096a71d1350)
 
 # 2.0 Power and Sense Management
 
@@ -93,7 +93,8 @@ The power and sensor management section explains the vehicle's power source and 
 
 We use the Jugee Rechargeable AA Lithium Battery, which provides 1.5V and 3000mWh of power, to drive our robot forward.
 
-![image](https://github.com/user-attachments/assets/4c95c2c8-64c7-4697-8d5d-d01c0942abb3)
+![image](https://github.com/user-attachments/assets/d972e6bb-2fd4-428e-ac55-c12d66c2376a)
+
 
 ## 2.2 Sensor
 
@@ -101,11 +102,13 @@ The robot is equipped with several sensors such as the Pixy 2 camera, an EV3 sen
 
 **Front view of the robot**
 
-![image](https://github.com/user-attachments/assets/a2856436-defd-4f45-b246-521d876f5b76)
+![image](https://github.com/user-attachments/assets/568f6a12-a09f-4efc-a025-019986a15722)
+
 
 **Back view of the robot**
 
-![image](https://github.com/user-attachments/assets/baf8bfea-a814-4732-adaa-ad62cfc70cd0)
+![image](https://github.com/user-attachments/assets/eee6404f-9885-4ca8-abfe-e3aa9ccd5326)
+
 
 **(i) Pixy 2 Camera**
 
@@ -113,45 +116,47 @@ The Pixy 2 camera helps the robot recognize traffic signs and parking lots, allo
 
 The figure below shows the details look of the Pixy 2 Camera:
 
-![image](https://github.com/user-attachments/assets/560a7fc5-654e-4cf8-81a7-6177fa2baf22)
+![image](https://github.com/user-attachments/assets/2672c420-754f-4b49-9237-3aa88f177eb5)
 
 In camera systems, the tilt angle, focal length, and field of view are crucial for effective monitoring. A 60-degree tilt offers a balanced coverage area, clear images, and reduces distractions. The Focal Length and Field of View Principle explain that a shorter focal length gives a wider view, which, combined with tilt, expands coverage, especially in large areas. The 60-degree tilt extends the camera’s coverage and minimizes blind spots, ensuring no critical areas are overlooked. This allows the robot to track the traffic signs and the parking lot more precisely.
 
-![image](https://github.com/user-attachments/assets/f03c1d4e-8a03-451e-bd4c-f19c9692d1fd)
+![image](https://github.com/user-attachments/assets/07a6ea6d-d81a-451a-bc0e-5a71a6e24d21)
 
-![image](https://github.com/user-attachments/assets/4111ce9c-efc1-4bed-ae05-5c3800faf8a5)
+![image](https://github.com/user-attachments/assets/c5289491-9bed-4bca-a2f1-f507df5713f5)
 
 Since there was no Lego part to secure the Pixy 2 Camera, we designed a custom 3D-printed component to firmly lock it in place on the robot. This ensures the camera stays steady during movement, preventing shaking that could affect pixel capture and improving accuracy in detecting obstacles.
 
-![image](https://github.com/user-attachments/assets/9491c01d-937f-490b-a2e2-85d40718a16f)
+![image](https://github.com/user-attachments/assets/7e4d6e23-ec61-4f2c-bc23-ced7696b0a69)
 
 **(ii) Color Sensor**
 
 A color sensor in LEGO Mindstorms robots detects and distinguishes colors by emitting light and measuring how much is reflected. This helps the robot stay on the correct path and follow directions. Sometimes the color sensor misreads due to external light interference, so we wrap it in black tape to shield it from light, ensuring more accurate color readings.
 
-![image](https://github.com/user-attachments/assets/94ab1d46-cb14-4f9a-8ba5-eb0ade13bb06)
+![image](https://github.com/user-attachments/assets/b738730a-8e1b-4425-85bf-2171124524a9)
 
 **(iii) Gyro Sensor**
 
 The gyro sensor helps the robot stay stable and move accurately by tracking its rotation. It detects changes in direction, ensuring the robot moves straight and turns precisely. The gyro sensor often has data errors, causing fluctuations. In order to fix this, we will hard reset it before each robot operation.
 
-![image](https://github.com/user-attachments/assets/2661848e-fe30-4fdd-9c58-857bacd85eaa)
+![image](https://github.com/user-attachments/assets/e5817616-e9e2-46b1-8f6a-2197a00a0c80)
 
 **(iv) Ultrasonic sensor**
 
 The ultrasonic sensor was chosen to help the robot to measure distances and detect the wall. It uses sound waves to find the wall and calculates the distance based on how long the sound takes to return. This prevents the robot from knocking into the wall.
 
-![image](https://github.com/user-attachments/assets/a267a5c1-f6f1-4546-ba61-aea3dcdaa97d)
+![image](https://github.com/user-attachments/assets/c807ed4c-3eeb-4126-addd-dcc1800895f4)
 
 **(v) EV3 Sensor Multiplexer**
 
 The EV3 Sensor Multiplexer allows us to connect more sensors to an EV3 brick, which normally has a limited number of sensor ports. It expands the robot's ability to interact with its environment by letting multiple sensors use a single port.
  
-![image](https://github.com/user-attachments/assets/0d0dfeb4-eb6b-4790-83be-3a67fa3ca763)
+![image](https://github.com/user-attachments/assets/dd1a77dc-e817-435e-8f54-bfc0678f32e6)
 
 ## 2.2 Build of Materials
 
 The table below is the build of materials (BOM) that is needed for the vehicle robot. The Build of Materials (BOM) is the summary list of all the parts that are needed to build our self-driving car. The table shows the names, quantities, and details of each item, helping to ensure all necessary parts are available and correctly used during assembly. It also helps track and organize the parts for the robot or car’s construction.
+
+![image](https://github.com/user-attachments/assets/4e9cfc41-4373-4390-a531-2a869d31f6d9)
 
 ![image](https://github.com/user-attachments/assets/55358e2e-7736-44cb-b83b-ab1843582f9c)
 
@@ -161,7 +166,6 @@ The table below is the build of materials (BOM) that is needed for the vehicle r
 
 ![image](https://github.com/user-attachments/assets/fbad9195-4b49-43a0-9bfd-25d99535a4c3)
 
-![image](https://github.com/user-attachments/assets/bd3a2072-c1b1-4085-a36c-e348484c0c4d)
 
 ## 2.3 Wiring Diagram
 
@@ -169,21 +173,23 @@ The following wiring diagram illustrates the connection of motors and sensors on
 
 **(i) Open Challenge**
 
-![image](https://github.com/user-attachments/assets/2ddfb6f5-6235-480a-8a74-0f34101e21b0)
+![image](https://github.com/user-attachments/assets/cbbad0e8-723a-4e55-af62-1ec0d47184e6)
 
-**(ii) Obstacle Challenge**
+**(ii) Obstacles Challenge**
 
-![image](https://github.com/user-attachments/assets/0ae3c21f-0310-4811-81f9-6782e972e721)
+![image](https://github.com/user-attachments/assets/11195ba5-4962-498f-ad27-a5565a666c2c)
 
 # 3.0  Obstacle Management
 
 In this section, we will discuss how our self-driving car successfully tackled both the Open Challenge and the Obstacle Challenge. Additionally, a video explaining the robot’s structure and showcasing demonstrations of each challenge is accessible via the QR code below
 
-![image](https://github.com/user-attachments/assets/2b1387a8-a5fd-455a-98ca-f4dab171614a)
+![image](https://github.com/user-attachments/assets/dd0c2cc8-410e-4832-bc1c-cecb0451b299)
+
 
 We programmed our robot using the Clev3r-Python programming language for precise and efficient operation. 
 
-![image](https://github.com/user-attachments/assets/2f6d550b-3594-4dd9-a4d1-ddfaad08137c)
+![image](https://github.com/user-attachments/assets/939b30f0-e76e-4c20-a334-34b74149eeaa)
+
 
 ## 3.1 Open Challenge
 
@@ -191,7 +197,7 @@ For the open challenges, we use the ultrasonic sensors to decide if the robot sh
 
 Diagram below shows the flowchart for Open Challenge: 
 
-![image](https://github.com/user-attachments/assets/e99b42b4-2be4-480c-a193-eacbb6456678)
+![image](https://github.com/user-attachments/assets/db5b84f3-8734-414b-9161-3b59baaef006)
 
 The following is an explanation of the code that is used in the robot for Open Challenge:
 
