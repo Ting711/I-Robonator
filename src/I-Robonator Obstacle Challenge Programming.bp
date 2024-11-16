@@ -1,0 +1,426 @@
+folder "prjs""Clever"
+Speaker.Tone(100,440,80)
+Sensor.SetMode(4,2)
+
+'Display Function
+Function Display (in number value1,in number value2)
+  LCD.Clear()
+  LCD.Text(1,50,0,2,value1)
+  LCD.Text(1,50,20,2,value2)
+EndFunction
+
+'Set Multiplexer Sensor Mode
+Function setSensorMode(in number port, in number chanel, in number mode)
+  address = 80 + 1 * (chanel - 1)
+  Sensor.WriteI2CRegister(port,address,82,mode)
+EndFunction
+
+'Get Multiplexer Sensor Value
+Function getValue(in number port, in number chanel, out number values)
+  address = 80 + 1 * (chanel - 1)
+  readData = Sensor.ReadI2CRegisters(port,address,84,2)
+  values = readData[1] * 256 + readData[0]
+EndFunction
+
+'-----Pixy Function-------'
+Function getSignature(in number port, in number sig, out number x, out number y)
+  address = 80 + sig
+  values = Sensor.ReadI2CRegisters(port, 1, address, 5)
+  x = values[1]
+  y = values[2]
+EndFunction
+
+setSensorMode(2,1,0)
+setSensorMode(2,2,0)
+setSensorMode(2,3,0)
+
+'-----Sensor Function-----'
+@relativeHeading=0
+Sub ReadSensor
+  While "True"
+    getValue(2,3,RawGyro)
+    If RawGyro >= 32768 Then
+      Gyro = RawGyro - 65536
+    Else
+      Gyro = RawGyro
+    EndIf
+    @relativeHeading = @Gyro*-1 + target
+    getValue(2,1,rawleftwall)
+    getValue(2,2,rawrightwall)
+    If rawleftwall>2500 Then
+      leftwall=2500
+    Else
+      leftwall=rawleftwall
+    EndIf
+    If rawrightwall>2500 Then
+      rightwall=2500
+    Else
+      rightwall=rawrightwall
+    EndIf
+    getSignature(1,1,greenx,greeny)
+    getSignature(1,2,redx,redy)
+    getSignature(1,3,pinkx,pinky)
+    getSignature(3,3,backpinkx,backpinky)
+  EndWhile
+EndSub
+
+Thread.Run=ReadSensor
+'-----------------------------------------------------'
+
+Sub ResetSteering
+  Motor.StartPower("A",50)
+  Program.Delay(500)
+  While Motor.GetSpeed("A")<>0
+    'wait
+  EndWhile
+  Motor.Move("A",-50,39,"True")
+  Motor.ResetCount("A")
+EndSub
+
+'------------------------------------------------------
+
+target = 0
+lastPillar=0
+pillardistance=177
+followGreendistance=pillardistance+25
+followReddistance=pillardistance+20
+
+lastPillarDistance=180
+
+avoidGreenpixel=235
+avoidRedpixel=23
+
+Sub Steering
+  
+  If leftwall>0 And rightwall>0 And Sensor.ReadRawValue(4,0)>0 Then
+    Motor.StartPower("D",speed)
+  Else
+    Motor.StartPower("D",0)
+  EndIf
+  
+  If uturnnow = 1 Then
+    pillardistance=0
+    turn = @relativeHeading * correction * 5
+    
+    'ElseIf parkingnow = 1 Then
+    'correction=1
+    'turn = @relativeHeading * correction * 2
+    
+  Else
+    greenDistance = Math.SquareRoot(Math.Power(greenx-130,2)+Math.Power(greeny-255,2))
+    redDistance = Math.SquareRoot(Math.Power(redx-130,2)+Math.Power(redy-255,2))
+    
+    If greenDistance<lastPillarDistance Then
+      lastPillar=-1
+    EndIf
+    If redDistance<lastPillarDistance Then
+      lastPillar=1
+    EndIf
+    
+    If leftwall < 135 And wallCheck=1 And Math.Abs(@relativeHeading)<45 Then
+      Speaker.Tone(100,220,50) 'ORI 140
+      leftwallturn = -25
+    Else
+      leftwallturn = 0
+    EndIf
+    
+    If rightwall < 130 And wallCheck=1 And Math.Abs(@relativeHeading)<45 Then
+      Speaker.Tone(100,660,50) 'ORI 150
+      rightwallturn = 25
+    Else
+      rightwallturn = 0
+    EndIf
+    
+    If greenDistance < followGreendistance Or redDistance < followReddistance  Then
+      
+      If greenDistance < pillardistance Then
+        If cw=1 Then
+          pillarturn=((avoidGreenpixel-greenx)*greeny/100)*0.35
+        Else
+          pillarturn=((avoidGreenpixel-greenx)*greeny/100)*0.65 'closer
+        EndIf
+        
+      ElseIf redDistance < pillardistance Then
+        If cw=1 Then
+          pillarturn=((avoidRedpixel-redx)*redy/100)*0.65 'closer
+        Else
+          pillarturn=((avoidRedpixel-redx)*redy/100)*0.35 'closer
+        EndIf
+        
+      ElseIf greenDistance < followGreendistance Then
+        'Speaker.Tone(100,200,50)
+        If cw=1 Then
+          pillarturn = (130-greenx)*0.32
+        Else
+          pillarturn = (110-greenx)*0.45
+        EndIf
+      ElseIf redDistance < followReddistance Then
+        'Speaker.Tone(100,1000,50)
+        If cw=-1 Then
+          pillarturn = (130-redx)*0.45
+        Else
+          pillarturn = (130-redx)*0.32
+        EndIf
+      EndIf
+    Else
+      pillarturn = 0
+    EndIf
+    
+    If pinkx > 0 And pinkx < 50 And pinky > 100 And cw = 1 And LoopCount < 12 + uturn Or pinkx > 200 And pinky > 100 And cw = -1 And LoopCount < 12 + uturn Or pinky > 80 And pinkx > 50 And pinkx < 200 And LoopCount < 12 + uturn Then
+      'Speaker.Tone(100,660,50)
+      pinkturn = -28 * cw
+    Else
+      pinkturn=0
+    EndIf
+    
+    If leftwallturn=0 And rightwallturn=0 And pillarturn=0 And pinkturn=0 Then
+      gyroturn = @relativeHeading * correction * 1.7
+    Else
+      gyroturn=0
+    EndIf
+    turn=leftwallturn+rightwallturn+pillarturn+pinkturn+gyroturn
+    LCD.Clear()
+    LCD.Text(1,50,0,2,leftwallturn)
+    LCD.Text(1,50,20,2,rightwallturn)
+    LCD.Text(1,50,40,2,pillarturn)
+    LCD.Text(1,50,60,2,gyroturn)
+    LCD.Text(1,50,80,2,uturnPillar)
+    LCD.Text(1,50,100,2,uturn)
+  EndIf
+  
+  'Power To Medium Motor
+  
+  steeringPower = (turn - Motor.GetCount("A")) * 1.5
+  Motor.StartPower("A", steeringPower)
+EndSub
+
+'-----------------------------------------------------------------
+
+Function waitDegrees(in number degrees)
+  dDegrees = Motor.GetCount("D")
+  While Math.Abs(Motor.GetCount("D") - dDegrees) < degrees
+    Steering()
+  EndWhile
+  'Speaker.Tone(100,4000,50)
+EndFunction
+
+'-----Check Parking-----'
+CheckParking=0
+Sub CheckParking
+  While loopCount<5
+    If cw=1 Then
+      If pinkx>0 And pinkx<150 Then
+        parking=loopCount
+        Speaker.Tone(100,800,1)
+      EndIf
+    Else
+      If pinkx>180 And pinky >20  Then
+        Speaker.Tone(100,800,1)
+        parking=loopCount
+      EndIf
+    EndIf
+  EndWhile
+EndSub
+
+Thread.Run=CheckParking
+
+'----- Loop Functions------'
+speed = 70
+loopCount = 0
+round = 12
+cw = 0
+uturn = 0
+uturnnow=0
+uturnPillar = 0
+wallCheck=1
+parking=4
+correction=1
+
+getSignature(3,1,lastGreenX,lastGreenY)
+getSignature(3,2,lastRedX,lastRedY)
+getSignature(1,1,greenx,greeny)
+getSignature(1,2,redx,redy)
+
+If greeny > redy And greenx > 90 And greenx < 230 Then
+  uturnPillar=-1 'green
+ElseIf redy > greeny And redx > 90 And redx < 230 Then
+  uturnPillar=1
+EndIf
+
+'LCD.Clear()
+'LCD.Text(1,50,0,2,greeny)
+'LCD.Text(1,50,20,2,redy)
+'LCD.Text(1,50,40,2,uturnPillar)
+
+If lastRedX<>0 Then
+  If lastRedY>lastGreenY And lastRedX > 25 And lastRedX < 225 Then
+    uturn=1
+  EndIf
+EndIf
+
+While loopCount<round
+  If loopCount = 0 Then
+    ResetSteering()
+    waitDegrees(80)
+    
+    While Sensor.ReadRawValue(4,0) = 6
+      Steering()
+    EndWhile
+    waitDegrees(10)
+    
+    If Sensor.ReadRawValue(4,0) > 3 Then 'orange
+      cw = 1
+      Speaker.Tone(100,50,50)
+    Else
+      cw = -1
+      Speaker.Tone(100,1200,50)
+    EndIf
+    
+    target = target - 89.25 * cw
+    
+  Else
+    
+    If cw=lastPillar Then
+      waitDegrees(1350)
+      Speaker.Tone(100,220,50)
+    Else
+      waitDegrees(1650)
+      Speaker.Tone(100,660,50)
+    EndIf
+    
+    If loopCount=12 + uturn Then 'Wait 5 seconds after finishing 3rd round
+      If cw = lastPillar Then
+        waitDegrees(20)
+      Else
+        waitDegrees(60)
+      EndIf
+      timeCount=0
+      speed=0
+      Steering()
+      While timeCount<=5
+        Speaker.Tone(100,200,50)
+        Program.Delay(1000)
+        timeCount++
+      EndWhile
+           
+      pillardistance=180
+      speed=60
+      
+      If cw=1 Then
+        avoidGreenpixel=0
+        
+      Else
+        avoidRedpixel=250
+      EndIf
+      
+    EndIf
+    Speaker.Tone(100,1200,100)
+    
+    parkingcheck=1
+    
+    If cw = 1 Then
+      While Sensor.ReadRawValue(4,0) <> 4 And Sensor.ReadRawValue(4,0) <> 5 'WaitOrange
+        Steering()
+      EndWhile
+      Speaker.Tone(100,50,50)
+    Else
+      While Sensor.ReadRawValue(4,0) <> 2 'Wait Blue
+        Steering()
+      EndWhile
+      Speaker.Tone(100,1200,50)
+    EndIf
+    
+    If loopCount=3 And lastRedX=0 And lastGreenX=0 And lastPillar=1 Then
+      uturn=1
+    EndIf
+    
+    If loopCount = 8 And uturn = 1 Then
+      cw = cw * -1
+      If uturnPillar=0 Then
+        uturnPillar=lastPillar
+      EndIf
+      If uturnPillar = -1 Then
+        Speaker.Tone(100,880,50) 'green
+        target = target - (180)
+      Else
+        Speaker.Tone(100,440,50) 'red
+        target = target + (180)
+      EndIf
+      uturnnow = 1
+      waitDegrees(850)
+      uturnnow=0
+      Speaker.Tone(100,880,50)
+      pillardistance = 178
+      
+    ElseIf loopCount < 8 Then
+      target = target - 90.50 * cw
+    ElseIf loopCount > 7 And uturn = 0 Then
+      target = target - 91.00 * cw
+    ElseIf loopCount > 7 And uturn = 1 Then
+      target = target - 92.25 * cw
+    ElseIf loopCount > 12 Then
+      target = target - 90.50 * cw
+    EndIf
+    
+    'Display(target,0)
+  EndIf
+  
+  If uturn=0  Then
+    round = 12 + parking
+  Else
+    If parking=4 Then
+      parking=0
+    EndIf
+    round = 13 + (4 - parking)
+  EndIf
+  'Display(parking,loopCount)
+  loopCount = loopCount + 1
+EndWhile
+
+'Speaker.Tone(100,220,50)
+
+If cw = -1 Then
+  While Sensor.ReadRawValue(4,0) <> 4 And Sensor.ReadRawValue(4,0) <> 5 'WaitOrange
+    Steering()
+  EndWhile
+Else
+  While Sensor.ReadRawValue(4,0) <> 2 'Wait Blue
+    Steering()
+  EndWhile
+EndIf
+
+If cw = 1 Then
+  pillardistance=0
+  followGreendistance=0
+  followReddistance=0
+  waitDegrees(180)
+Else
+  waitDegrees(550)
+  pillardistance=0
+  followGreendistance=0
+  followReddistance=0
+  waitDegrees(675)
+EndIf
+
+'Speaker.Tone(100,220,50)
+pillardistance=0
+followGreendistance=0
+followReddistance=0
+uturnnow=1
+target=target + 99.5 * cw
+
+Time.Reset5()
+stuck=0
+dDegrees=Motor.GetCount("D")
+While stuck<25 Or Time.Get5()<2000
+  If (Motor.GetCount("D")-dDegrees)<3 Then
+    stuck++
+  Else
+    stuck=0
+  EndIf
+  dDegrees=Motor.GetCount("D")
+  Steering()
+EndWhile
+speed=0
+Speaker.Tone(100,900,1000)
+Program.Delay(1000)
