@@ -203,15 +203,18 @@ The following is an explanation of the code that is used in the robot for Open C
 
 ![image](https://github.com/user-attachments/assets/cc8b1dea-631e-4a87-b89b-82177471547d)
 
-1. Getting direction: The robot uses the gyro sensor to get the heading direction.
+**1. Getting direction:** The robot uses the gyro sensor to get the heading direction.
+
 
 ![image](https://github.com/user-attachments/assets/4ad1d04a-308b-452e-9325-28f53fa1e38a)
 
-2. Turning: The robot uses the ultrasonic sensor to make sure the timing of turning. It will turn with the 90 degrees when the value between the ultrasonic and inner wall exceeds 800mm.
+**2. Turning:** The robot uses the ultrasonic sensor to make sure the timing of turning. It will turn with the 90 degrees when the value between the ultrasonic and inner wall exceeds 800mm.
+
 
 ![image](https://github.com/user-attachments/assets/111e590a-172d-43b6-978f-9a229f86c901)
 
-3. Avoid Walls: The robot uses an ultrasonic sensor to maintain the distance between the walls and the robots. When the robot gets closer to the inner wall, the steering will do a correction to avoid hitting the wall.
+**3. Avoid Walls:** The robot uses an ultrasonic sensor to maintain the distance between the walls and the robots. When the robot gets closer to the inner wall, the steering will do a correction to avoid hitting the wall.
+
 
 ## 3.2 Obstacle Challenge
 
@@ -225,23 +228,28 @@ The following are explanations of the code that is used in the robot for the Obs
 
 ![image](https://github.com/user-attachments/assets/ac937e74-1f65-4323-844c-ca23dc7b4801)
 
-1. Getting direction and turning: The robot uses the color sensor to check the line on the game field. When the first line it detects is orange, then it will run clockwise and the same concept for the counterclockwise. Then, it uses the gyro sensor to get the heading direction.
+**1. Getting direction and turning:** The robot uses the color sensor to check the line on the game field. When the first line it detects is orange, then it will run clockwise and the same concept for the counterclockwise. Then, it uses the gyro sensor to get the heading direction.
+
 
 ![image](https://github.com/user-attachments/assets/cfc59518-3f76-48dd-bf7b-5d697291dc1b)
 
-2. Avoid Walls: The robot uses both sides of the ultrasonic sensor to check the value of the distance between the robot. The value is used to prevent the robot from colliding with the wall.
+**2. Avoid Walls:** The robot uses both sides of the ultrasonic sensor to check the value of the distance between the robot. The value is used to prevent the robot from colliding with the wall.
+
 
 ![image](https://github.com/user-attachments/assets/4c42ff2c-086d-4709-a41f-8e891b54b668)
 
-3.Avoid traffic sign: The robot uses the upper Pixy 2 Camera to detect the presence of the traffic sign. The steering will turn to the right side if the traffic sign is red, and to the left side if the sign is green. 
+**3.Avoid traffic sign:** The robot uses the upper Pixy 2 Camera to detect the presence of the traffic sign. The steering will turn to the right side if the traffic sign is red, and to the left side if the sign is green. 
+
 
 ![image](https://github.com/user-attachments/assets/7f1ddcb8-a54e-45b1-be5b-9869a6554b01)
 
-4. U-turn: The robot uses the behind Pixy 2 Camera to detect the traffic sign placed behind of the robot. If the traffic sign is red, then it will do a U-turn when the third laps start.
+**4. U-turn:** The robot uses the behind Pixy 2 Camera to detect the traffic sign placed behind of the robot. If the traffic sign is red, then it will do a U-turn when the third laps start.
+
 
 ![image](https://github.com/user-attachments/assets/11a15a77-3578-4cc3-bf84-98bd59884a04)
 
-5. Parking: The robot uses the upper Pixy 2 Camera to detect the magenta parking lot and do parking after completing 3 laps for the challenge.
+**5. Parking:** The robot uses the upper Pixy 2 Camera to detect the magenta parking lot and do parking after completing 3 laps for the challenge.
+
 
 # 4.0 Engineering Factors
 
