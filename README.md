@@ -287,6 +287,6 @@ The ultrasonic sensor has an issue where it may turn off unexpectedly during ope
 
 **Credits**
 
-We would like to express our sincere gratitude to LEGO Education for their invaluable support and commitment in providing us with a high-quality LEGO EV3 set.
+We would like to express our sincere gratitude to LEGO Education for their invaluable support and commitment in providing us with a high-quality LEGO EV3 set. Appreciation to the team sponsors from Ministry of Education Innovation and Talent Development Sarawak (MEITD);  SOP Foundation and YB Dato Sri Lee Kim Shin.
 
 
