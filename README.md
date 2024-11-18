@@ -1,6 +1,6 @@
 # Introduction
 
-This documentation covers the mobility management, power and sense management, obstacle management, and detailed sharing of our self-driving car that was precisely designed for the 2024 World Robot Olympiad (WRO) Future Engineers competition.
+This documentation covers the mobility management, power and sense management, obstacle management, and detailed sharing of our self-driving car that was precisely designed for the World Robot Olympiad (WRO) International Final 2024 Future Engineers Challenge competition.
 
 # Content
 
