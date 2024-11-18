@@ -24,7 +24,7 @@ Our team, I-Robonator from Malaysia, is a dedicated trio with a shared passion f
 
 # Performance Video
 
-Get a closer look at our self-driving car’s design, watch its performance in the Open and Obstacles Challenges, and explore the technology behind its operation by clicking the link https://youtu.be/7t6WDGnzcJU or scan the QR code to watch the video and explore our project in action. 
+Get a closer look at our self-driving car’s design, watch its performance in the Open and Obstacles Challenges, and explore the technology behind its operation by clicking the link https://youtu.be/BfgNG1Vi0Bc or scan the QR code to watch the video and explore our project in action. 
 
 ![image](https://github.com/user-attachments/assets/b4c70313-4417-46f6-8546-d771221d6556)
 
