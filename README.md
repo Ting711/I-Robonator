@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/0ecde905-d292-454c-801f-502cd61eb79c)# Introduction
+# Introduction
 
 This documentation covers the mobility management, power and sense management, obstacle management, and detailed sharing of our self-driving car that was precisely designed for the World Robot Olympiad (WRO) International Final 2024 Future Engineers Challenge competition.
 
@@ -22,9 +22,12 @@ Our team, I-Robonator from Malaysia, is a dedicated trio with a shared passion f
 
 ![image](https://github.com/user-attachments/assets/25aaf9ce-f56e-43f8-97e3-e85b9ddcb3a4)
 
+# Performance Video
+
 Get a closer look at our self-driving car’s design, watch its performance in the Open and Obstacles Challenges, and explore the technology behind its operation by clicking the link https://youtu.be/7t6WDGnzcJU or scan the QR code to watch the video and explore our project in action. 
 
 ![image](https://github.com/user-attachments/assets/b4c70313-4417-46f6-8546-d771221d6556)
+
 
 
 # 1.0 Mobility Management
